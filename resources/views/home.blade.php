@@ -14,15 +14,10 @@
 <body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
 
-    <div  class=" bg-gradient-to-b from-[#004BA9] to-[#0C81B8] relative w-full">
-        <img src="{{ asset('img/Tasbeh.JPG') }}" alt="banner" class="w-full h-full object-cover absolute mix-blend-overlay opacity-10">
+    <div  class="  relative w-full bg-cover bg-center" style="background-image: url('{{ asset('img/backgroundfyp.png') }}');">
+       
         
-        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-            </div>
-        </div>
+        
         <div class="mx-auto flex items-center justify-center gap-x-4  py-32 sm:py-30 ">
 
             <img class="w-56 " src="{{ asset('img/BH.png') }}" alt="Logo Belia Harmoni">
@@ -34,14 +29,14 @@
                     difference join us in creating a positive impact today!.</p>
                 <div class="flex justify-center mt-8">
                     <div class="flex w-96 rounded-md  bg-white">
-                        <input type="search" name="Search" id="search" placeholder="Find Opportunities"
-                            class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none">
-                        <button class="rounded-md bg-[#1A9AD6] px-4 py-2 text-white hover:bg-[#004BA9] ">Search</button>
+                        
+                        
 
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
             aria-hidden="true">
             <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"

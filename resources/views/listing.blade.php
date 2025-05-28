@@ -11,7 +11,7 @@
     <title>Find Opportunities</title>
 </head>
 
-<body class="bg-[#E3F2FD]" >
+<body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
     <div class="bg-gradient-to-b from-[#004BA9] to-[#0C81B8] relative isolate px-6  lg:px-8  z-0">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -33,7 +33,8 @@
                         <div class="flex w-96 rounded-md  bg-white">
                             <input type="search" name="search" id="search" placeholder="Find Opportunities"
                                 class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none">
-                            <button type="submit" class="rounded-md bg-[#1A9AD6] px-4 py-2 text-white hover:bg-[#004BA9] ">Search</button>
+                            <button type="submit"
+                                class="rounded-md bg-[#1A9AD6] px-4 py-2 text-white hover:bg-[#004BA9] ">Search</button>
                         </div>
                     </div>
                 </form>
@@ -48,16 +49,38 @@
 
     </div>
     <div class="flex w-full bg-[#E3F2FD] mt-5">
-        
+
         <aside class=" sticky top-0 w-1/4 p-4 h-96  flex justify-center">
-            
-            <div class="p-4 flex items-center bg-[#1A9AD6]">
-                 <img class="w-full h-80 " src="{{ asset('img/dummyprogram.png') }}" alt="poster">
+
+            <div class=" p-4 flex justify-center items-center min-h-screen">
+                <div class="relative w-[320px] h-[500px] bg-cover bg-center rounded-lg shadow-lg overflow-hidden"
+                    style="background-image: url('{{ asset('img/aside.jpg') }}');">
+
+                    <div
+                        class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-md z-10 flex flex-row items-center">
+                        <img src="{{ asset('img/BH.png') }}" alt="logo" class="w-6 h-6 ">
+                       
+                        <span class="flex justify-center">Belia Harmoni</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+                    <div class="absolute bottom-0 p-6 text-white z-10 flex flex-row">
+                        <img src="{{ asset('img/BH.png') }}" alt="logo" class="w-28 h-28 ">
+                        <h2 class="text-2xl font-bold mb-4">A new way<br>for you to<br>volunteer.</h2>
+                        
+                       
+                    </div>
+
+                    
+                </div>
+            </div>
+            <div class="p-4 w-[300px] h-[450px] overflow-hidden rounded-lg">
+                <img class="w-full h-full object-cover object-center" src="{{ asset('img/aside.jpg') }}" alt="poster">
             </div>
 
 
 
-            
+
         </aside>
         <div class="w-1/2 flex flex-col items-center  p-10 ">
             <div class="border-b top-0 border-gray-500 mb-6 w-full max-w-3xl ">
@@ -67,103 +90,120 @@
             </div>
 
             <div class="w-full max-w-3xl">
-                @foreach ($programs as $program )
-                    
-                
-                {{-- div untuk card --}}
-                <div class="shadow-md p-8 bg-white border border-gray-300 rounded-xl  dark:bg-gray-800 dark:border-gray-700  mb-8">
-                    <h1 class="font-bold text-2xl pb-5">{{$program ['title'] }}</h1>
-                    <div class="flex items-center justify-between  space-x-2">
-                        <div class="flex  items-center space-x-2">
-                            <img class="w-8 h-8" src="{{ asset('img/maps.gif') }}" alt="maps">
-                            <p>{{  $program->Lokasi->address_line }}</p>
-                            <img class="w-8 h-8" src="{{ asset('img/enterprise.gif') }}" alt="maps">
-                            <p>{{$program->Cawangan->universiti }}</p>
+                @foreach ($programs as $program)
+                    {{-- div untuk card --}}
+                    <div
+                        class="shadow-md p-8 bg-white border border-gray-300 rounded-xl  dark:bg-gray-800 dark:border-gray-700  mb-8">
+                        <h1 class="font-bold text-2xl pb-5">{{ $program['title'] }}</h1>
+                        <div class="flex items-center justify-between  space-x-2">
+                            <div class="flex  items-center space-x-2">
+                                <img class="w-8 h-8" src="{{ asset('img/maps.gif') }}" alt="maps">
+                                <p>{{ $program->Lokasi->address_line }}</p>
+                                <img class="w-8 h-8" src="{{ asset('img/enterprise.gif') }}" alt="maps">
+                                <p>{{ $program->Cawangan->universiti }}</p>
 
-                        </div>
-                        
+                            </div>
+
                             {{-- <button class="text-white bg-[#1A9AD6]  hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
                             <a href="{{ url('/program', $program['program_id']) }}">View Opportunites --></a>
                             </button> --}}
-                           
-                        
 
 
-                    </div>
-                    <div class="flex justify-end mt-7 ">
 
-                    
-                            <a  href="/program/{{ $program->program_id}}"
-                             class=" text-white bg-[#1A9AD6]  hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
-                            >View Opportunites -->
+
+                        </div>
+                        <div class="flex justify-end mt-7 ">
+
+
+                            <a href="/program/{{ $program->program_id }}"
+                                class=" text-white bg-[#1A9AD6]  hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">View
+                                Opportunites -->
                             </a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
                 {{-- end --}}
 
-                
+
 
 
             </div>
-            
+
 
         </div>
-        <aside class="sticky top-0 w-1/4 p-4 h-96 "  x-data="{ isDropdownOpen1: false }">
+        <aside class="sticky top-0 w-1/4 p-4 h-96 " x-data="{ isDropdownOpen1: false }">
             <div class=" p-4 bg-gray-50 rounded-lg mr-5 mb-5 h-96 shadow-lg sticky top-0 items-center border ">
                 <form action="/filterprograms" method="GET">
                     <h2 class="text-lg font-semibold">Search Filter</h2>
-                   
-                    <select name="state" class="shadow-sm mb-5 bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" id="state">
-                        <option value="0">Select State</option>
-                        @foreach ($states as $state )
-                           <option value="{{ $state->state }}">{{ $state->state }}</option>
-                        @endforeach
-                    </select> 
-                   
 
-                    <button  @click="isDropdownOpen1 = !isDropdownOpen1" type="button" class="shadow-sm text-left bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
-                        
+                    <select name="state"
+                        class="shadow-sm mb-5 bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
+                        id="state">
+                        <option value="0">Select State</option>
+                        @foreach ($states as $state)
+                            <option value="{{ $state->state }}">{{ $state->state }}</option>
+                        @endforeach
+                    </select>
+
+
+                    <button @click="isDropdownOpen1 = !isDropdownOpen1" type="button"
+                        class="shadow-sm text-left bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
+
                         <div class="flex justify-between items-center">
                             Select Program Type
-                            <svg  :class="{ 'rotate-180': isDropdownOpen1 }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class=" size-4">
+                            <svg :class="{ 'rotate-180': isDropdownOpen1 }" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
+                                class=" size-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                              </svg>
-                              
+                            </svg>
+
                         </div>
-                              
-                    </button> 
-                    <div  x-show="isDropdownOpen1" class="absolute bg-white w-[90%]   border border-gray-300 rounded-lg shadow-lg p-3  ">
+
+                    </button>
+                    <div x-show="isDropdownOpen1"
+                        class="absolute bg-white w-[90%]   border border-gray-300 rounded-lg shadow-lg p-3  ">
                         <div class="space-y-2">
                             @php
-                                $types =['Community', 'Education', 'Children & Youth', 'Faith-Based','Environment','Etchicity','Health & Medecine','Crisis Support'];
+                                $types = [
+                                    'Community',
+                                    'Education',
+                                    'Children & Youth',
+                                    'Faith-Based',
+                                    'Environment',
+                                    'Etchicity',
+                                    'Health & Medecine',
+                                    'Crisis Support',
+                                ];
                             @endphp
 
                             @foreach ($types as $type)
-                            <div>
-                                <input type="checkbox" name="type[]" id="$type" value="{{ $type }}"
-                                    class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm">
-                                <label for="$type" class="ms-2 text-sm text-gray-700">{{ $type }}</label>
-                            </div>
+                                <div>
+                                    <input type="checkbox" name="type[]" id="$type" value="{{ $type }}"
+                                        class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm">
+                                    <label for="$type"
+                                        class="ms-2 text-sm text-gray-700">{{ $type }}</label>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                     <label for="startdate">From</label>
-                    <input type="date" placeholder="From" name="startdate" id="startdate" class="border border-gray-30 rounded-lg p-2 w-full mb-4" />
+                    <input type="date" placeholder="From" name="startdate" id="startdate"
+                        class="border border-gray-30 rounded-lg p-2 w-full mb-4" />
                     <label for="enddate">To</label>
-                    <input type="date" placeholder="To" id="enddate" name="enddate" class="border border-gray-30 rounded-lg p-2 w-full mb-4" />
-                    
-                    <button type="submit" class="text-white mb-4 bg-[#1A9AD6] hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full px-5 py-2.5">
+                    <input type="date" placeholder="To" id="enddate" name="enddate"
+                        class="border border-gray-30 rounded-lg p-2 w-full mb-4" />
+
+                    <button type="submit"
+                        class="text-white mb-4 bg-[#1A9AD6] hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full px-5 py-2.5">
                         Apply Filter
                     </button>
-                </form>  
-        
+                </form>
+
             </div>
         </aside>
     </div>
 
 </body>
-<script>
-   
-</script>
+<script></script>
+
 </html>

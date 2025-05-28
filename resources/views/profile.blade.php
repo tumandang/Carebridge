@@ -13,17 +13,14 @@
 
 <body class="bg-[#E3F2FD]   ">
     <x-navbar></x-navbar>
-    <div
-        class=" font-kanit mx-auto flex items-center justify-center gap-x-4  py-24 sm:py-30 bg-gradient-to-b from-[#004BA9] to-[#0C81B8]  ">
+    <div class=" font-kanit flex items-center justify-center gap-x-4  py-32 sm:py-44 bg-gradient-to-b h-full from-[#014AA6] to-[#0C81B8] relative w-full">
+ 
+        <img src="{{ asset('img/Tasbeh.JPG') }}" alt="banner" class="w-full h-full object-cover absolute mix-blend-overlay opacity-10">
 
 
-
-        <div class="text-center  ">
-            <h1 class="text-5xl text-white sm:text-6xl text-left whitespace-nowrap font-bebas ">Manage Your Profile Now
-                Volunteers!
+        <div class="text-center">
+            <h1 class="text-5xl text-white sm:text-6xl text-left whitespace-nowrap font-bebas "> Manage Your Profile Now Volunteers!
             </h1>
-
-
         </div>
     </div>
     

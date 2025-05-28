@@ -25,9 +25,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Auth\VerificationController;
 
 //landingpage
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes(['verify' => true]);
 
@@ -140,51 +138,51 @@ Route::get('/resetpassword', function () {
     
 // });
 
-Route::get('/inbox', function () {
-    return view('general',['messages'=>[
-        [
-            'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-            'sender' => 'Belia Harmoni Gambang',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-            'sender' => 'Belia Harmoni Gambang',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-            'sender' => 'ABDUL SUMBUL',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-            'sender' => 'ISMAIL AHMAD KANABAWI',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-            'sender' => 'ABDUL SUMBUL',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-            'sender' => 'ISMAIL AHMAD KANABAWI',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-            'sender' => 'ABDUL SUMBUL',
-            'time' => '12hr'
-        ],
-        [
-            'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-            'sender' => 'ISMAIL AHMAD KANABAWI',
-            'time' => '12hr'
-        ]
-    ]]);
+// Route::get('/inbox', function () {
+//     return view('general',['messages'=>[
+//         [
+//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
+//             'sender' => 'Belia Harmoni Gambang',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
+//             'sender' => 'Belia Harmoni Gambang',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
+//             'sender' => 'ABDUL SUMBUL',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
+//             'sender' => 'ISMAIL AHMAD KANABAWI',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
+//             'sender' => 'ABDUL SUMBUL',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
+//             'sender' => 'ISMAIL AHMAD KANABAWI',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
+//             'sender' => 'ABDUL SUMBUL',
+//             'time' => '12hr'
+//         ],
+//         [
+//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
+//             'sender' => 'ISMAIL AHMAD KANABAWI',
+//             'time' => '12hr'
+//         ]
+//     ]]);
     
-});
+// });
 
 Route::get('/beliaharmoni/notifications', [AdminController::class, 'showNotifications'])->name('inbox');
 Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');

@@ -11,11 +11,21 @@
     <title>Your Inbox</title>
 </head>
 
-<body class="">
+<body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
-    <div class="flex  flex-row bg-gray-100 w-full h-screen" x-data="{ isOpen: true, isDropdownOpen1: false, isDropdownOpen2: false }">
+    <div class="mb-10 font-kanit flex items-center justify-center gap-x-4   py-32 sm:py-44 bg-gradient-to-b h-full from-[#004BA9] to-[#0C81B8] relative w-full">
+ 
+        <img src="{{ asset('img/Tasbeh.JPG') }}" alt="banner" class="w-full h-full object-cover absolute mix-blend-overlay opacity-10">
 
-        <div class="flex felx-none flex-row flex-auto bg-gray-100 gap-3 rounded-tl-xl border  shadow">
+
+        <div class="text-center">
+            <h1 class="text-5xl text-white sm:text-6xl text-left whitespace-nowrap font-bebas "> TRACK YOUR APPLICATION
+            </h1>
+        </div>
+    </div>
+    <div class="flex  flex-row w-full h-screen" x-data="{ isOpen: true, isDropdownOpen1: false, isDropdownOpen2: false }">
+
+        <div class="flex felx-none flex-row flex-auto  gap-3 rounded-tl-xl   shadow">
 
             <div class="flex flex-col w-3/5  shadow rounded-lg m-4  bg-white p-4">
                 <div class="flex-none h-16 gap-3 items-center bg-white p-4 flex flex-row">

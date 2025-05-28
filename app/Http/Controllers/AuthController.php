@@ -114,4 +114,20 @@ class AuthController extends Controller
     }
 
 
+    public function logoutadmin(Request $request){
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('beliaharmoni/loginadmin');
+    }
+    public function logoutvol(Request $request){
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('login');
+    }
+
+
 }
