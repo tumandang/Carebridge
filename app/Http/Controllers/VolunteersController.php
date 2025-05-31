@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\User;
 use App\Models\Volunteers;
 use App\Models\Application;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -109,5 +111,14 @@ class VolunteersController extends Controller
             'application' => $application,
             'selectedApplication' => $selectedApplication
         ]);
+    }
+
+    public function dashboard(){
+        $branchcount = Admin::count();
+        $totalprogram = Program::count();
+        $status = Program::where('status', 'International')->count();
+
+        return view('home',compact('branchcount','totalprogram','status'));
+
     }
 }

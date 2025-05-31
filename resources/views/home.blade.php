@@ -54,10 +54,10 @@
 
             <img class="w-16 h-16" src="{{ asset('img/enterprise.gif') }}" alt="icon branch">
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">25 Branch in
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $branchcount }} Branch{{ $branchcount != 1 ? 'es' : '' }}  in
                     Malaysia</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">We operate 25 branches nationwide, connecting
+            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">We operate {{ $branchcount }} Branch{{ $branchcount != 1 ? 'es' : '' }}nationwide, connecting
                 volunteers with local communities to create a meaningful impact.</p>
 
         </div>
@@ -67,10 +67,10 @@
             class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <img class="w-16 h-16" src="{{ asset('img/mission.gif') }}" alt="mission branch">
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">25 Successful
-                    Program</h5>
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $totalprogram }}
+                    Programs</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Our 25 programs have helped communities through
+            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Our {{ $totalprogram }} programs have helped communities through
                 education, environment, and social initiatives, making a real difference.</p>
 
         </div>
@@ -81,10 +81,10 @@
             class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <img class="w-16 h-16" src="{{ asset('img/progress.gif') }}" alt="icon ongoing">
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">25 Active Programs
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $status }} International Programs
                 </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Join one of our 25 active programs focused on
+            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Join one of our {{ $status }} active programs focused on
                 health, disaster relief, and education to create lasting change</p>
 
         </div>

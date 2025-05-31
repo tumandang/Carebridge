@@ -11,10 +11,16 @@ class Volunteers extends Model
     use HasFactory;
     protected $fillable = ['user_id', 'fullname', 'notel', 'age', 'gender', 'academic', 'profile', 'skill'];
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
-    public function applications(){
+    public function applications()
+    {
         return $this->hasMany(Application::class);
+    }
+    public function programs()
+    {
+        return $this->belongsToMany(Program::class, 'applications', 'volunteer_id', 'program_id');
     }
 }

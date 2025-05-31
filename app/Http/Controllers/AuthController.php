@@ -116,6 +116,7 @@ class AuthController extends Controller
 
     public function logoutadmin(Request $request){
 
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

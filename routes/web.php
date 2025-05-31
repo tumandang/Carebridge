@@ -34,10 +34,7 @@ Route::get('beliaharmoni/loginadmin',[AuthController::class,'loginadmin'])->name
 Route::post('beliaharmoni/loginadmin',[AuthController::class,'logmasukadmin'])->name('logmasuk.admin');
 
 // Dashboard admin
-Route::get('beliaharmoni/dashboard', function () {
-    return view('Admin/dashboard');
-
-})->name('dashboard.show');
+Route::get('beliaharmoni/dashboard',[AdminController::class,'Dashboard'])->name('dashboard.show');
 
 // Volunteer Register
 Route::get('/register', [AuthController::class,'createvolunteer'])->name('create.volunteer');
@@ -47,9 +44,7 @@ Route::post('/register', [AuthController::class,'storevolunteer'])->name('store.
 Route::get('/login', [AuthController::class,'loginvolunteer'])->name('login.volunteer');
 Route::post('/login', [AuthController::class,'logmasukvolunteer'])->name('logmasuk.volunteer');
 
-Route::get('/homepage', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('homepage.show');
+Route::get('/homepage', [VolunteersController::class,'dashboard'])->middleware(['auth', 'verified'])->name('homepage.show');
 
 
 //verify
@@ -95,6 +90,8 @@ Route::post('/reset-password', function (Request $request) {
 })->name('password.update');
 
 
+//logoutadmin
+Route::post('logoutadmin', [AuthController::class, 'logoutadmin'])->name('logoutadmin');
 // //homepage
 // Route::get('/homepage', function () {
 //     return view('home');
