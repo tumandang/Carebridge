@@ -63,7 +63,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('homepage.show');
         } else {
-            return redirect()->back()->with('gagal', 'Email atau Password anda salah') ;
+            return redirect()->back()->with('gagal', 'Your Email or Password are invalid') ;
         }
         
        

@@ -51,8 +51,9 @@ class VolunteerNoti extends Notification
          if ($this->status === 'Accepted') {
             $message->line("Congratulations! Your application for '{$this->programName}' has been **accepted**.")
                     ->line("This the link group of this program")
-                    ->line("{$this->linkgp}")
-                    ->line("Please check your inbox for further steps.");
+                    ->line("👉 [Join Group Here]({$this->linkgp})")
+                    ->line("Make sure to check the group regularly for announcements and instructions.");
+                    
         }
         elseif ($this->status === 'Rejected') {
             $message->line("We're sorry to inform you that your application for '{$this->programName}' has been **rejected**.")
@@ -63,7 +64,7 @@ class VolunteerNoti extends Notification
             $message->line("Your application for '{$this->programName}' is still **pending review**.")
                     ->line("You will be notified once there's an update.");
         }
-        return $message->action('Check Status', url('/inbox'))
+        return $message->action('Check Status', url('/trackstatus'))
                        ->line('Thank you for using CareBridge!');
 
     }

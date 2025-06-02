@@ -52,12 +52,10 @@
 
         <aside class=" sticky top-0 w-1/4 p-4 h-96  flex justify-center">
 
-            <div class=" p-4 flex justify-center items-center min-h-screen">
-                <div class="relative w-[320px] h-[500px] bg-cover bg-center rounded-lg shadow-lg overflow-hidden"
-                    style="background-image: url('{{ asset('img/aside.jpg') }}');">
+            <div class=" p-4 flex justify-center  min-h-screen ">
+                <div class="relative w-[320px] h-[500px] bg-cover bg-center rounded-lg shadow-lg overflow-hidden" style="background-image: url('{{ asset('img/aside.jpg') }}');">
 
-                    <div
-                        class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-md z-10 flex flex-row items-center">
+                    <div class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-md z-10 flex flex-row items-center">
                         <img src="{{ asset('img/BH.png') }}" alt="logo" class="w-6 h-6 ">
                        
                         <span class="flex justify-center">Belia Harmoni</span>
@@ -74,9 +72,7 @@
                     
                 </div>
             </div>
-            <div class="p-4 w-[300px] h-[450px] overflow-hidden rounded-lg">
-                <img class="w-full h-full object-cover object-center" src="{{ asset('img/aside.jpg') }}" alt="poster">
-            </div>
+            
 
 
 
