@@ -45,6 +45,10 @@ class ApplicationController extends Controller
             
         }
 
+        if ($program->full()){
+            return back()->with('error', 'This program is already full.');
+        }
+
         //check volunteer dah apply ke blom
         $applied = Application::where('program_id', $program->program_id)->where('volunteer_id', $vol->id)->exists();
 

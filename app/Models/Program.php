@@ -35,4 +35,8 @@ class Program extends Model
     {
         return $this->belongsToMany(Volunteers::class, 'applications', 'program_id', 'volunteer_id');
     }
+
+    public function full(){
+        return $this->applications()->where('status','Accepted')->count()>=$this->max_vol;
+    }
 }

@@ -17,7 +17,7 @@ class AddressSeeder extends Seeder
             'Johor', 'Kedah', 'Kelantan', 'Melaka', 'Negeri Sembilan',
             'Pahang', 'Perak', 'Perlis', 'Pulau Pinang', 'Sabah',
             'Sarawak', 'Selangor', 'Terengganu', 'Kuala Lumpur',
-            'Labuan', 'Putrajaya'
+            'Labuan', 'Putrajaya','International'
         ];
 
         foreach($states as $state){

@@ -14,10 +14,7 @@
 <body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
 
-    <div  class="  relative w-full bg-cover bg-center" style="background-image: url('{{ asset('img/backgroundfyp.png') }}');">
-       
-        
-        
+    <div  class="  relative w-full bg-cover bg-center" style="background-image: url('{{ asset('img/backgroundfyp.png') }}');"> 
         <div class="mx-auto flex items-center justify-center gap-x-4  py-32 sm:py-30 ">
 
             <img class="w-56 " src="{{ asset('img/BH.png') }}" alt="Logo Belia Harmoni">

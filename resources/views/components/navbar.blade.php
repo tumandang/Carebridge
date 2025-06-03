@@ -172,7 +172,7 @@
 
                     </div>
                     <div class="py-6">
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout.vol') }}">
                             @csrf
                             <button type="submit"
                                 class="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">

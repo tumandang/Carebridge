@@ -13,7 +13,7 @@
 
 <body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
-    <div class="bg-gradient-to-b from-[#004BA9] to-[#0C81B8] relative isolate px-6  lg:px-8  z-0">
+    <div class="relative w-full bg-cover" style="background-image: url('{{ asset('img/backgroundfyp.png') }}');">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -110,11 +110,16 @@
                         </div>
                         <div class="flex justify-end mt-7 ">
 
+                            @if (!$program->full())
+                                <a href="/program/{{ $program->program_id }}"
+                                    class=" text-white bg-[#1A9AD6]  hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">View
+                                    Opportunites -->
+                                </a>
+                            @else
+                                <span class="text-red-500 font-semibold">Application Already Closed</span>
+                            @endif
 
-                            <a href="/program/{{ $program->program_id }}"
-                                class=" text-white bg-[#1A9AD6]  hover:bg-[#004BA9] focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">View
-                                Opportunites -->
-                            </a>
+                            
                         </div>
                     </div>
                 @endforeach

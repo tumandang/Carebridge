@@ -44,6 +44,16 @@ Route::post('/register', [AuthController::class,'storevolunteer'])->name('store.
 Route::get('/login', [AuthController::class,'loginvolunteer'])->name('login.volunteer');
 Route::post('/login', [AuthController::class,'logmasukvolunteer'])->name('logmasuk.volunteer');
 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('beliaharmoni/loginadmin');
+})->name('logout.admin');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('login');
+})->name('logout.vol');
+
 Route::get('/homepage', [VolunteersController::class,'dashboard'])->middleware(['auth', 'verified'])->name('homepage.show');
 
 

@@ -13,7 +13,7 @@
 
 <body class="bg-[#E3F2FD]">
     <x-navbar></x-navbar>
-    <div class="bg-gradient-to-b from-[#004BA9] to-[#0C81B8] relative isolate px-6  lg:px-8  z-0">
+    <div class="relative w-full bg-cover" style="background-image: url('{{ asset('img/backgroundfyp.png') }}');">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
 
