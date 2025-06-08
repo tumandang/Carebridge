@@ -43,7 +43,7 @@ class AuthController extends Controller
         $vol = new Volunteers();
         $vol->user_id = $volunteer->id;
         $vol->save();
-        return redirect()->route('homepage.show');
+        return redirect()->route('verification.notice');
 
     }
 

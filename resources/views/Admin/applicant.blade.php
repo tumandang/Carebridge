@@ -70,7 +70,7 @@
                                 <div class="flex items-center space-x-2">
                                     <span class="text-gray-600">📂</span>
                                     @if ($apply->volunteer->cgpa_file)
-                                        <a href="{{ $apply->volunteer->cgpa_file }}"
+                                        <a href="{{ asset('storage/' . $apply->volunteer->cgpa_file) }}"
                                             class="text-blue-500 font-medium hover:underline" target="_blank">CGPA
                                             RESULT</a>
                                     @else

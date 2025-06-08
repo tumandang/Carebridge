@@ -114,6 +114,15 @@ class VolunteersController extends Controller
     }
 
     public function dashboard(){
+
+        if (!auth()->check()) {
+        
+        $branchcount = Admin::count();
+        $totalprogram = Program::count();
+        $status = Program::where('status', 'International')->count();
+
+        return view('landingpage', compact('branchcount', 'totalprogram', 'status'));
+    }
         $branchcount = Admin::count();
         $totalprogram = Program::count();
         $status = Program::where('status', 'International')->count();

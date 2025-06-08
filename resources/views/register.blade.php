@@ -10,10 +10,11 @@
     <title>Create Your Account</title>
 </head>
 <body class="bg-gradient-to-r from-[#71cdf8] to-[#004BA9]  ">
+  <img src="{{ asset('img/Tasbeh.JPG') }}" alt="banner"  class="w-full h-full object-cover absolute mix-blend-overlay opacity-10 pointer-events-none">>
     <div class="font-[sans-serif]">
-        <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
-          <div class="grid md:grid-cols-2 items-center gap-6 max-w-6xl w-full">
-            <div class=" bg-white rounded-2xl p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-md:mx-auto">
+        <div class="min-h-screen flex items-center justify-center py-6 px-4">
+          <div class=" items-center gap-6  w-1/4  sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4">
+            <div class=" bg-white rounded-2xl p-6  shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] ">
               <form action="{{ route('store.volunteer') }}" method="POST" class="space-y-4">
                 @csrf
                 <div class="mb-5 ">
@@ -92,9 +93,7 @@
                 <p class="text-sm !mt-8 text-center text-gray-500">Already have an account <a href="/login" class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Login Now</a></p>
               </form>
             </div>
-            <div class="max-md:mt-8">
-              <img src="{{  asset('img/reg.png') }}"  alt="Dining Experience" />
-            </div>
+            
           </div>
         </div>
       </div>

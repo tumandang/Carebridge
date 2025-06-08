@@ -41,7 +41,7 @@ Route::get('/register', [AuthController::class,'createvolunteer'])->name('create
 Route::post('/register', [AuthController::class,'storevolunteer'])->name('store.volunteer');
 
 // Login volunteer
-Route::get('/login', [AuthController::class,'loginvolunteer'])->name('login.volunteer');
+Route::get('/login', [AuthController::class,'loginvolunteer'])->name('login');
 Route::post('/login', [AuthController::class,'logmasukvolunteer'])->name('logmasuk.volunteer');
 
 Route::post('/logout', function () {
@@ -54,9 +54,11 @@ Route::post('/logout', function () {
     return redirect('login');
 })->name('logout.vol');
 
+
+
 Route::get('/homepage', [VolunteersController::class,'dashboard'])->middleware(['auth', 'verified'])->name('homepage.show');
 
-
+Route::get('/', [VolunteersController::class,'dashboard'])->name('homepage.show');
 //verify
 Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
@@ -95,7 +97,7 @@ Route::post('/reset-password', function (Request $request) {
     );
  
     return $status === Password::PasswordReset
-        ? redirect()->route('login.volunteer')->with('status', __($status))
+        ? redirect()->route('login')->with('status', __($status))
         : back()->withErrors(['email' => [__($status)]]);
 })->name('password.update');
 
@@ -134,68 +136,13 @@ Route::get('/resetpassword', function () {
     return view('resetpassword');
     
 });
-// Route::get('/applicationstatus', function () {
-//     return view(
-//         'track',
-//         [
-//             'application' => Program::all()
-//         ]
 
-//     );
-    
-// });
-
-// Route::get('/inbox', function () {
-//     return view('general',['messages'=>[
-//         [
-//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-//             'sender' => 'Belia Harmoni Gambang',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-//             'sender' => 'Belia Harmoni Gambang',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-//             'sender' => 'ABDUL SUMBUL',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-//             'sender' => 'ISMAIL AHMAD KANABAWI',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-//             'sender' => 'ABDUL SUMBUL',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-//             'sender' => 'ISMAIL AHMAD KANABAWI',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam odio impedit odit ipsam iste sequi hic harum earum? Voluptates quos inventore dolores officia possimus. Ipsum aspernatur ut quisquam magnam cumque.',
-//             'sender' => 'ABDUL SUMBUL',
-//             'time' => '12hr'
-//         ],
-//         [
-//             'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores soluta rerum quisquam dignissimos esse ab ea, laboriosam repudiandae, ex assumenda quos, excepturi possimus impedit? Iste quisquam exercitationem asperiores optio suscipit.',
-//             'sender' => 'ISMAIL AHMAD KANABAWI',
-//             'time' => '12hr'
-//         ]
-//     ]]);
-    
-// });
 
 Route::get('/beliaharmoni/notifications', [AdminController::class, 'showNotifications'])->name('inbox');
 Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 
-Route:: get('/trackstatus', [VolunteersController::class,'trackstatus'] )->name('track');
-Route::get('/trackstatus/{id}', [VolunteersController::class, 'viewstatus'])->name('track.view');
+Route:: get('/trackstatus', [VolunteersController::class,'trackstatus'] )->middleware(['auth', 'verified'])->name('track');
+Route::get('/trackstatus/{id}', [VolunteersController::class, 'viewstatus'])->middleware(['auth', 'verified'])->name('track.view');
 
 // Route::get('/inbox',[MesasageController::class,'index'])->name('inbox.index');
 // Route::get('/inbox/{id}',[MesasageController::class,'show'])->name('inbox.show');
@@ -210,8 +157,8 @@ Route ::put('/programs/update/{program_id}',[ProgramController::class,'update'])
 
 
 // UNTUK VOLUNTER PROFILE
-Route ::get('/profile',[VolunteersController::class,'index']) -> name('profile.index');
-Route ::put('/profile/update',[VolunteersController::class,'update'])->name('profile.update');
+Route ::get('/profile',[VolunteersController::class,'index'])->middleware(['auth', 'verified']) -> name('profile.index');
+Route ::put('/profile/update',[VolunteersController::class,'update'])->middleware(['auth', 'verified'])->name('profile.update');
 
 
 

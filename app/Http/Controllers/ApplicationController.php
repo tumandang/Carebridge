@@ -40,7 +40,17 @@ class ApplicationController extends Controller
            
             
 
-            return back()->with('show_cgpa_modal', true);
+           
+                if (request()->hasFile('cgpa_file')) {
+                    $cgpaFile = request()->file('cgpa_file');
+                    $filePath = $cgpaFile->store('cgpa_files', 'public'); 
+
+                    $vol->cgpa_file = $filePath;
+                    $vol->save();
+                } else {
+                    // If no file uploaded, show modal again
+                    return back()->with('show_cgpa_modal', true)->with('error', 'Please upload your CGPA file.');
+                }
 
             
         }
