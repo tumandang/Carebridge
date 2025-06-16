@@ -115,7 +115,7 @@ class ProgramController extends Controller
             'enddate' => 'required|date|after_or_equal:startdate',
             'deadline' => 'required|date|before:startdate',
             'type' => 'required|array',
-            'poster'=>'image|file|max:1024',
+            'poster'=>'image|file|mimes:jpg,jpeg,png|max:2048',
             'status' => 'required|string',
             'maxvol' => 'required|integer|min:1',
             'linkgp' => 'required|string',

@@ -184,8 +184,8 @@
                     
                                 
                                 <div>
-                                    <label for="status" class="text-sm font-medium text-gray-900 block mb-2">Status
-                                        Program</label>
+                                    <label for="status" class="text-sm font-medium text-gray-900 block mb-2">
+                                        Program Type</label>
                                     <div class="mb-2 sm:mb-6 flex-1">
                                         <div class="flex gap-10">
                                             <div class="inline-flex items-center">

@@ -34,9 +34,7 @@
                     <li class="bg-[#1D4ED8] rounded-xl p-2 text-white">
                         <a href="">Overview</a>
                     </li>
-                    <li class=" rounded-xl p-2 ">
-                        <a href="">Program</a>
-                    </li>
+                    
                 </ul>
             </div>
                <form action="{{ route('profile.update') }}"  method="POST" enctype="multipart/form-data">

@@ -35,7 +35,7 @@
                     
                         <div x-data="{ step: 1 }" class="pt-5 px-8 py-7 bg-white shadow-md rounded-md">
                     
-                            <div class="flex justify-between mb-6">
+                            <div class="flex items-center justify-between w-full mb-3">
                                 <template x-for="s in 4" :key="s">
                                     <div class="flex items-center relative">
                                         <div class="flex items-center rounded-lg p-1" :class="step === s ? 'text-white bg-[#1A9AD6]' : 'text-[#081E42] bg-white'">
@@ -46,7 +46,7 @@
                                             
                                         </div>
                                         <template x-if="s !== 4">
-                                            <div class="absolute top-1/2 left-full w-3/4 ml-5 h-[2px] bg-[#081E42] -translate-x-2"></div>
+                                            <div class="absolute top-1/2 left-full ml-5 w-[300px] max-w-[60vw] h-[2px] bg-[#081E42] -translate-x-2"></div>
                                         </template>
                                     </div>
                                 </template>
@@ -59,7 +59,7 @@
                                 <div>
                                     <label for="programname" class="text-sm font-medium text-gray-900 block mb-2">Program
                                         Name</label>
-                                    <input type="text" name="programname" id="programname"
+                                    <input type="text" name="programname" id="programname" value="{{ old('programname') }}"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                         placeholder="Gotong Royong Surau Al Mukhsin">
                                     @error('programname')
@@ -71,7 +71,7 @@
                                 <div>
                                     <label for="linkgp" class="text-sm font-medium text-gray-900 block mb-2">Link
                                         Group</label>
-                                    <input type="text" name="linkgp" id="linkgp"
+                                    <input type="text" name="linkgp" id="linkgp" value="{{ old('linkgp') }}"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                                         placeholder="https:/wasap242342352/.my">
                                     @error('linkgp')
@@ -97,9 +97,9 @@
                                 <div>
                                     <label for="details" class="text-sm font-medium text-gray-900 block mb-2">Program
                                         Details</label>
-                                    <textarea id="details" name="details" rows="6" 
+                                    <textarea id="details" name="details" rows="6"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                                        placeholder="Details"></textarea>
+                                        placeholder="Details">{{ old('details') }}</textarea>
                                     @error('details')
                                         <p class="text-red-600">{{ $message }}</p>
                                     @enderror
@@ -114,7 +114,9 @@
                                     <select name="state" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" id="state">
                                         <option value="0">Select State</option>
                                         @foreach ($states as $state )
-                                           <option value="{{ $state->state }}">{{ $state->state }}</option>
+                                           <option value="{{ $state->state }}" {{ old('state') == $state->state ? 'selected' : '' }}>
+                                                {{ $state->state }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 @error('state')
@@ -124,7 +126,7 @@
                                 <div>
                                     <label for="address_line"
                                     class="text-sm font-medium text-gray-900 block mb-2">Address</label>
-                                <input type="text" name="address_line" id="address_line"
+                                <input type="text" name="address_line" id="address_line" value="{{ old('address_line') }}"
                                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                                     placeholder="Surau Al Mukhsin Jalan Selamat 2/4">
                                 @error('address_line')
@@ -137,7 +139,7 @@
                                     <div>
                                         <label for="startdate" class="text-sm font-medium text-gray-900 block mb-2">Start
                                             Date</label>
-                                        <input type="date" name="startdate" id="startdate"
+                                        <input type="date" name="startdate" id="startdate" value="{{ old('startdate') }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                                             placeholder="$2300">
                                         @error('startdate')
@@ -147,7 +149,7 @@
                                     <div>
                                         <label for="enddate" class="text-sm font-medium text-gray-900 block mb-2">End
                                             Date</label>
-                                        <input type="date" name="enddate" id="enddate"
+                                        <input type="date" name="enddate" id="enddate" value="{{ old('enddate') }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
                                         @error('enddate')
                                             <p class="text-red-600">{{ $message }}</p>
@@ -159,7 +161,7 @@
                                 <div>
                                    <label for="deadline"
                                             class="text-sm font-medium text-gray-900 block mb-2">Deadline</label>
-                                        <input type="date" name="deadline" id="deadline"
+                                        <input type="date" name="deadline" id="deadline" value="{{ old('deadline') }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
                                         @error('deadline')
                                             <p class="text-red-600">{{ $message }}</p>
@@ -172,7 +174,7 @@
                                 <div>
                                     <label for="maxvol" class="text-sm font-medium text-gray-900 block mb-2">Maximum of
                                         Volunteer</label>
-                                    <input type="number" name="maxvol" id="maxvol"
+                                    <input type="number" name="maxvol" id="maxvol" value="{{ old('maxvol') }}"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                                         placeholder="123">
                                     @error('maxvol')
@@ -182,13 +184,13 @@
                     
                                 
                                 <div>
-                                    <label for="status" class="text-sm font-medium text-gray-900 block mb-2">Status
-                                        Program</label>
+                                    <label for="status" class="text-sm font-medium text-gray-900 block mb-2">
+                                        Program Type</label>
                                     <div class="mb-2 sm:mb-6 flex-1">
                                         <div class="flex gap-10">
                                             <div class="inline-flex items-center">
                                                 <label class="relative flex items-center cursor-pointer" for="Opened">
-                                                    <input name="status" type="radio" value="International"
+                                                    <input name="status" type="radio" value="International"  {{ old('status') === 'International' ? 'checked' : '' }}
                                                         class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
                                                         id="Opened">
                                                     <span
@@ -201,7 +203,7 @@
 
                                             <div class="inline-flex items-center">
                                                 <label class="relative flex items-center cursor-pointer" for="Closed">
-                                                    <input name="status" type="radio" value="Domestic"
+                                                    <input name="status" type="radio" value="Domestic" {{ old('status') === 'Domestic' ? 'checked' : '' }}
                                                         class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
                                                         id="Closed" checked="">
                                                     <span
@@ -225,24 +227,28 @@
                                         <div class="flex gap-5 flex-col">
                                             <div class="">
                                                 <input type="checkbox"  name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" id="Community"
-                                                value="Community">
+                                                value="Community"
+                                                 {{ is_array(old('type')) && in_array('Community', old('type')) ? 'checked' : '' }}>
                                                 <label for="Community" class="cursor-pointer">Community</label>
                                             </div>
                                             
                                             <div class="  ">
                                                 <input type="checkbox" name="type[]" class="   w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="education"
-                                                            value="Education">
+                                                            value="Education"
+                                                             {{ is_array(old('type')) && in_array('Education', old('type')) ? 'checked' : '' }}>
                                                             <label for="education" class="cursor-pointer ms-2  font-medium text-gray-900">Education</label>
                                             </div>
                                             <div class="">
                                                 <input type="checkbox"  name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" id="child"
-                                                value="Children & Youth">
+                                                value="Children & Youth"
+                                                 {{ is_array(old('type')) && in_array('Children & Youth', old('type')) ? 'checked' : '' }}>
                                                 <label for="child" class="cursor-pointer ms-2  font-medium text-gray-900">Children & Youth</label>
                                             </div>
                                             
-                                            <div class="  ">
+                                            <div class="">
                                                 <input type="checkbox" name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="Faith-Based"
-                                                            value="Faith-Based">
+                                                            value="Faith-Based"
+                                                             {{ is_array(old('type')) && in_array('Faith-Based', old('type')) ? 'checked' : '' }}>
                                                             <label for="Faith-Based" class="cursor-pointer ms-2  font-medium text-gray-900">Faith-Based</label>
                                             </div>
                                             
@@ -251,40 +257,48 @@
                                             
                                             <div class="">
                                                 <input type="checkbox" name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="envi"
-                                                            value="Environment">
+                                                            value="Environment"
+                                                             {{ is_array(old('type')) && in_array('Environment', old('type')) ? 'checked' : '' }}>
                                                         <label for="envi"  class="cursor-pointer ms-2  font-medium text-gray-900 ">Environment</label>
                                             </div>
                                             <div class=" ">
                                                 <input type="checkbox" name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="Etchicity"
-                                                            value="Etchicity">
+                                                            value="Etchicity"
+                                                             {{ is_array(old('type')) && in_array('Etchicity', old('type')) ? 'checked' : '' }}>
                                                             <label for="Etchicity" class=" cursor-pointer ms-2  font-medium text-gray-900 ">Etchicity</label>
                                             </div>
                                             <div class="">
                                                 <input type="checkbox" name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="Health"
-                                                            value="Health & Medecine">
+                                                            value="Health & Medecine"
+                                                             {{ is_array(old('type')) && in_array('Health & Medecine', old('type')) ? 'checked' : '' }}>
                                                         <label for="Health"  class="cursor-pointer ms-2  font-medium text-gray-900">Health & Medecine</label>
                                             </div>
                                             <div class=" ">
                                                 <input type="checkbox" name="type[]" class=" w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 rounded-sm    focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  id="Crisis"
-                                                            value="Crisis Support">
+                                                            value="Crisis Support"
+                                                             {{ is_array(old('type')) && in_array('Crisis Support', old('type')) ? 'checked' : '' }}>
                                                             <label for="Crisis" class=" cursor-pointer ms-2  font-medium text-gray-900 ">Crisis Support</label>
                                             </div>
                                         </div>
                                 </div>
                                 </div>
                             </div>
-                            <div x-show="step === 4">
-                                <p class="text-lg">You're almost done! click submit below.</p>
-                                <button type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded mt-4">Submit</button>
-                            </div>
-                    
                             
+                            <div x-show="step === 4">
+                               <p class="text-lg">Click submit below to post the program.</p>
+                                
+                            </div>
+                             
                             <div class="mt-6 flex justify-between">
                                 <button type="button" @click="step = step - 1" x-show="step > 1"
                                     class="px-4 py-2 bg-red-200 text-black rounded">Back</button>
                                 <button type="button" @click="step = step + 1" x-show="step < 4"
                                     class="px-4 py-2 bg-blue-600 text-white rounded">Next</button>
                                
+                            </div>
+                            <div x-show="step === 4">
+                               
+                                <button type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded mt-4">Submit</button>
                             </div>
                     
                         </div>
