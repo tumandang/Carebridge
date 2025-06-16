@@ -89,7 +89,7 @@ class ApplicationController extends Controller
 
         $volunteer = $applicant->volunteer;
         $user = $volunteer->user;
-        $user->notify(new VolunteerNoti($volunteer->Fullname,$applicant->program->title,$applicant->status,$applicant->program->linkgroup));
+        $user->notify(new VolunteerNoti($volunteer->Fullname,$applicant->program->title,$applicant->status,$applicant->program->linkgroup,null));
 
 
         return back()->with('success', 'Application accepted.');
@@ -107,7 +107,7 @@ class ApplicationController extends Controller
         $applicant->save();
         $volunteer = $applicant->volunteer;
         $user = $volunteer->user;
-        $user->notify(new VolunteerNoti($volunteer->Fullname,$applicant->program->title,$applicant->program->status,$applicant->program->linkgroup));
+        $user->notify(new VolunteerNoti($volunteer->Fullname,$applicant->program->title,$applicant->program->status,$applicant->program->linkgroup,$applicant->remark));
 
         return back()->with('success', 'Application accepted.');
     }

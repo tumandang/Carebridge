@@ -15,15 +15,17 @@ class VolunteerNoti extends Notification
     protected $programName;
     protected $status;
     protected $linkgp;
+    protected $remark;
     /**
      * Create a new notification instance.
      */
-    public function __construct($volunteerName, $programName,$status,$linkgp)
+    public function __construct($volunteerName, $programName,$status,$linkgp,$remark)
     {
         $this -> volunteerName = $volunteerName;
         $this-> programName = $programName;
         $this-> status = $status;
         $this->linkgp = $linkgp;
+        $this->remark = $remark;
 
     }
 
@@ -57,7 +59,7 @@ class VolunteerNoti extends Notification
         }
         else {
             $message->line("We're sorry to inform you that your application for '{$this->programName}' has been **rejected**.")
-                    
+                    ->line("The Remarks: '{$this->remark}'")
                     ->line("You can apply to other programs on the platform.");
         }
         
