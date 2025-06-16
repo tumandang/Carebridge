@@ -36,101 +36,113 @@
                         <p><strong>Location:</strong> {{ $applicant->Lokasi->address_line }}</p>
 
                     </div>
-                    @foreach ($applicants as $apply)
+                    @if ($applicants->IsEmpty())
                         <div class="h-auto p-6 mb-4 bg-white border border-gray-300 rounded-3xl shadow-lg">
+                            <h1 class="text-xl font-semibold">List of Application</h1>
 
-                            <div class="flex justify-between  pb-5 ">
-                                <div class="gap-4 flex flex-row ">
-                                    <img class=" rounded-lg w-16 h-16" src="{{ asset('storage/' . $apply->volunteer->Profile) }}" alt="avatar">
-                                    <div class="flex flex-col">
-                                        <h1 class="font-bold text-xl">{{ $apply->volunteer->Fullname }}
-                                            ({{ $apply->volunteer->Age }})
-                                        </h1>
-                                        <h3 class="text-gray-500">{{ $apply->volunteer->user->email }}</h3>
+                            <tr>
+                                <td colspan="8" class="text-center py-4 text-gray-500">
+                                    No Applicant found. 
+                            </tr>
+
+                        </div>
+                    @else
+                        @foreach ($applicants as $apply)
+                            <div class="h-auto p-6 mb-4 bg-white border border-gray-300 rounded-3xl shadow-lg">
+
+                                <div class="flex justify-between  pb-5 ">
+                                    <div class="gap-4 flex flex-row ">
+                                        <img class=" rounded-lg w-16 h-16"
+                                            src="{{ asset('storage/' . $apply->volunteer->Profile) }}" alt="avatar">
+                                        <div class="flex flex-col">
+                                            <h1 class="font-bold text-xl">{{ $apply->volunteer->Fullname }}
+                                                ({{ $apply->volunteer->Age }})
+                                            </h1>
+                                            <h3 class="text-gray-500">{{ $apply->volunteer->user->email }}</h3>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <hr class="my-4">
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-600">📞</span>
+
+                                        <span class="font-medium">{{ $apply->volunteer->Notel }}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-600">♂️</span>
+                                        <span class="font-medium">{{ $apply->volunteer->Gender }}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-600">🎓</span>
+                                        <span class="font-medium">{{ $apply->volunteer->Skill }}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-600">📂</span>
+                                        @if ($apply->volunteer->cgpa_file)
+                                            <a href="{{ asset('storage/' . $apply->volunteer->cgpa_file) }}"
+                                                class="text-blue-500 font-medium hover:underline" target="_blank">CGPA
+                                                RESULT</a>
+                                        @else
+                                            <p class="text-gray-500 italic">This program does not need a CGPA FILE</p>
+                                        @endif
                                     </div>
                                 </div>
+                                <hr class="my-4">
+                                <div class="text-sm flex justify-between">
+                                    <div class="flex flex-col ">
+                                        <p class="font-medium text-gray-700 mb-2">📌 Applied for: <span
+                                                class="text-gray-800">{{ $applicant['title'] }}</span></p>
 
+                                        <p class="font-medium text-gray-700">🟡 Status: <span
+                                                class="{{ $apply->status == 'Accepted' ? 'text-green-600' : ($apply->status == 'Rejected' ? 'text-red-600' : 'text-yellow-600') }}">
+                                                {{ $apply->status }}</span></p>
+                                    </div>
 
-                            </div>
-                            <hr class="my-4">
-                            <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-gray-600">📞</span>
+                                    <div class="flex gap-4 items-center">
+                                        <form action="{{ route('application.accept', $apply->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="text-black bg-transparent hover:text-white hover:bg-green-600 rounded-xl px-4 py-2 border border-gray-500 h-10">Accept
+                                                Volunteer</button>
+                                        </form>
 
-                                    <span class="font-medium">{{ $apply->volunteer->Notel }}</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-gray-600">♂️</span>
-                                    <span class="font-medium">{{ $apply->volunteer->Gender }}</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-gray-600">🎓</span>
-                                    <span class="font-medium">Media</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-gray-600">📂</span>
-                                    @if ($apply->volunteer->cgpa_file)
-                                        <a href="{{ asset('storage/' . $apply->volunteer->cgpa_file) }}"
-                                            class="text-blue-500 font-medium hover:underline" target="_blank">CGPA
-                                            RESULT</a>
-                                    @else
-                                        <p class="text-gray-500 italic">This program does not need a CGPA FILE</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <hr class="my-4">
-                            <div class="text-sm flex justify-between">
-                                <div class="flex flex-col ">
-                                    <p class="font-medium text-gray-700 mb-2">📌 Applied for: <span
-                                            class="text-gray-800">{{ $applicant['title'] }}</span></p>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <button type="button" onclick="openRejectModal({{ $apply->id }})"
+                                                class="text-black bg-transparent hover:text-white hover:bg-red-600 rounded-xl px-4 py-2 border border-gray-500 h-10">Reject
+                                                Volunteer</button>
+                                        </form>
 
-                                    <p class="font-medium text-gray-700">🟡 Status: <span
-                                            class="{{ $apply->status == 'Accepted' ? 'text-green-600' : ($apply->status == 'Rejected' ? 'text-red-600' : 'text-yellow-600') }}">
-                                            {{ $apply->status }}</span></p>
-                                </div>
-
-                                <div class="flex gap-4 items-center">
-                                    <form action="{{ route('application.accept', $apply->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit"
-                                            class="text-black bg-transparent hover:text-white hover:bg-green-600 rounded-xl px-4 py-2 border border-gray-500 h-10">Accept
-                                            Volunteer</button>
-                                    </form>
-
-                                    <form action="" method="POST">
-                                        @csrf
-                                        <button type="button"
-                                          onclick="openRejectModal({{ $apply->id }})"
-                                            class="text-black bg-transparent hover:text-white hover:bg-red-600 rounded-xl px-4 py-2 border border-gray-500 h-10">Reject
-                                            Volunteer</button>
-                                    </form>
-
-                                    <div id="rejectModal-{{ $apply->id }}"
-                                        class="fixed inset-0 z-50 items-center flex justify-center bg-black bg-opacity-50 hidden">
-                                        <div class="bg-white rounded-xl p-6 w-96">
-                                            <h2 class="text-lg font-semibold mb-4">Rejection Remark</h2>
-                                            <form id="rejectForm-{{ $apply->id }}"
-                                                action="{{ route('application.reject', $apply->id) }}" method="POST">
-                                                @csrf
-                                                <textarea name="remark" required placeholder="Enter your reason..." class="w-full border rounded p-2 mb-4">
+                                        <div id="rejectModal-{{ $apply->id }}"
+                                            class="fixed inset-0 z-50 items-center flex justify-center bg-black bg-opacity-50 hidden">
+                                            <div class="bg-white rounded-xl p-6 w-96">
+                                                <h2 class="text-lg font-semibold mb-4">Rejection Remark</h2>
+                                                <form id="rejectForm-{{ $apply->id }}"
+                                                    action="{{ route('application.reject', $apply->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <textarea name="remark" required placeholder="Enter your reason..." class="w-full border rounded p-2 mb-4">
                                                     
                                                 </textarea>
-                                                <div class="flex justify-end space-x-2">
-                                                    <button type="button"
-                                                        onclick="closeRejectModal({{ $apply->id }})"
-                                                        class="text-gray-500">Cancel</button>
-                                                    <button type="submit"
-                                                        class="bg-red-600 text-white px-4 py-2 rounded">Submit</button>
-                                                </div>
-                                            </form>
+                                                    <div class="flex justify-end space-x-2">
+                                                        <button type="button"
+                                                            onclick="closeRejectModal({{ $apply->id }})"
+                                                            class="text-gray-500">Cancel</button>
+                                                        <button type="submit"
+                                                            class="bg-red-600 text-white px-4 py-2 rounded">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
-
+                    @endif
 
                 </div>
             </main>

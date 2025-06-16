@@ -33,7 +33,7 @@
                         <h1 class="font-alex text-xl font-semibold mb-10">Program ID: {{ $data->program_id }}</h1>
                         <div x-data="{ step: 1 }" class="pt-5 px-8 py-7 bg-white shadow-md rounded-md">
                     
-                            <div class="flex justify-between mb-6">
+                            <div class="flex items-center justify-between w-full mb-3">
                                 <template x-for="s in 4" :key="s">
                                     <div class="flex items-center relative">
                                         <div class="flex items-center rounded-lg p-1" :class="step === s ? 'text-white bg-[#1A9AD6]' : 'text-[#081E42] bg-white'">
@@ -44,7 +44,7 @@
                                             
                                         </div>
                                         <template x-if="s !== 4">
-                                            <div class="absolute top-1/2 left-full w-3/4 ml-5 h-[2px] bg-[#081E42] -translate-x-2"></div>
+                                            <div class="absolute top-1/2 left-full ml-5 w-[300px] max-w-[60vw] h-[2px] bg-[#081E42] -translate-x-2"></div>
                                         </template>
                                     </div>
                                 </template>
@@ -139,7 +139,7 @@
                                     <div>
                                         <label for="startdate" class="text-sm font-medium text-gray-900 block mb-2">Start
                                             Date</label>
-                                        <input type="date" name="startdate" id="startdate"
+                                        <input type="date" name="startdate" id="startdate" value="{{ $data->startdate }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                                             placeholder="$2300">
                                         @error('startdate')
@@ -149,7 +149,7 @@
                                     <div>
                                         <label for="enddate" class="text-sm font-medium text-gray-900 block mb-2">End
                                             Date</label>
-                                        <input type="date" name="enddate" id="enddate"
+                                        <input type="date" name="enddate" id="enddate" value="{{ $data->enddate }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
                                         @error('enddate')
                                             <p class="text-red-600">{{ $message }}</p>
@@ -161,7 +161,7 @@
                                 <div>
                                    <label for="deadline"
                                             class="text-sm font-medium text-gray-900 block mb-2">Deadline</label>
-                                        <input type="date" name="deadline" id="deadline"
+                                        <input type="date" name="deadline" id="deadline" value="{{ $data->deadline }}"
                                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5">
                                         @error('deadline')
                                             <p class="text-red-600">{{ $message }}</p>
@@ -174,7 +174,7 @@
                                 <div>
                                     <label for="maxvol" class="text-sm font-medium text-gray-900 block mb-2">Maximum of
                                         Volunteer</label>
-                                    <input type="number" name="maxvol" id="maxvol"
+                                    <input type="number" name="maxvol" id="maxvol" value="{{ $data->max_vol }}"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                                         placeholder="123">
                                     @error('maxvol')

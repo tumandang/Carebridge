@@ -205,7 +205,7 @@
                                                 <label class="relative flex items-center cursor-pointer" for="Closed">
                                                     <input name="status" type="radio" value="Domestic" {{ old('status') === 'Domestic' ? 'checked' : '' }}
                                                         class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
-                                                        id="Closed" checked="">
+                                                        id="Closed" >
                                                     <span
                                                         class="absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                                                     </span>

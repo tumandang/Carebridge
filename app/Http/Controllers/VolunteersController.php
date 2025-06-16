@@ -32,16 +32,21 @@ class VolunteersController extends Controller
     public function update(Request $request)
     {
 
-        
+
         // return $request->file('poster')->store('poster-images');
         $request->validate([
             'fullname' => 'required|string|max:255',
-           
+            'age' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'telephone' => [
                 'required',
                 'regex:/^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$/'
             ],
-            // 'skills' => 'required'|'array'
+        ], [
+            'age.required' => 'Please enter your date of birth.',
+            'age.date' => 'The date of birth must be a valid date.',
+            'age.before' => 'You must be at least 18 years old to register.',
+            'telephone.required' => 'Please enter your telephone number.',
+            'telephone.regex' => 'Please enter a valid Malaysian phone number.',
         ]);
         //  dd($request->all());
         $userId = Auth::id();
